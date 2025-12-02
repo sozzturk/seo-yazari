@@ -33,6 +33,11 @@ with col2:
             with st.spinner("Yapay zeka düşünüyor..."):
                 # Backend dosyasındaki fonksiyonu çalıştır
                 sonuc = metin_olustur(urun_adi, ozellikler, ton)
+                if sonuc:
+                    st.markdown("### 📝 Oluşturulan Ürün Açıklaması")
+                    # Kopyalama butonunu ekle
+                    from streamlit_extras.st_copy_to_clipboard import st_copy_to_clipboard
+                    st_copy_to_clipboard(metin, 'Kopyalandı! 📋')
                 
                 st.success("Tamamlandı!")
                 st.text_area("Kopyalanabilir Metin", value=sonuc, height=250)
@@ -41,3 +46,5 @@ with col2:
 # Alt bilgi
 st.markdown("---")
 st.markdown("© 2025 AI Writer App | Python ile geliştirildi")
+
+
