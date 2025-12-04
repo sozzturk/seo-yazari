@@ -1,5 +1,6 @@
 import streamlit as st
 from backend import metin_olustur # Yazdığımız motoru buraya çağırdık
+from streamlit_extras.st_copy_to_clipboard import st_copy_to_clipboard # <-- BU SATIRI EKLE!
 
 # Sayfa Ayarları
 st.set_page_config(page_title="AI İçerik Sihirbazı", page_icon="🚀")
@@ -43,7 +44,6 @@ with col2:
         st.text_area("Kopyalamak İçin Tıklayın", sonuc, height=300)
         
         # Kopyalama butonunu ekle
-        from streamlit_extras.st_copy_to_clipboard import st_copy_to_clipboard
         st_copy_to_clipboard(sonuc, 'Kopyalandı! 📋')
                    
 
