@@ -1,5 +1,6 @@
 import streamlit as st
 from backend import metin_olustur # Yazdığımız motoru buraya çağırdık
+from streamlit_extras.st_copy_to_clipboard import st_copy_to_clipboard
 
 
 # Sayfa Ayarları
@@ -42,7 +43,7 @@ with col2:
         
         # Metni bir alana yerleştirme
         st.text_area("Kopyalamak İçin Tıklayın", sonuc, height=300)
-        from streamlit_extras.st_copy_to_clipboard import st_copy_to_clipboard
+     
         # Kopyalama butonunu ekle
         st_copy_to_clipboard(sonuc, 'Kopyalandı! 📋')
                    
