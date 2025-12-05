@@ -1,7 +1,6 @@
 import streamlit as st
 from backend import metin_olustur # Yazdığımız motoru buraya çağırdık
-from streamlit_extras.st_copy_to_clipboard import st_copy_to_clipboard
-
+# Hata veren harici kütüphane kaldırıldı
 
 # Sayfa Ayarları
 st.set_page_config(page_title="AI İçerik Sihirbazı", page_icon="🚀")
@@ -28,6 +27,8 @@ with col1:
 with col2:
     st.subheader("Sonuç")
     
+    sonuc = "" # Sonucu tanımlıyoruz
+
     if olustur_btn:
         if not urun_adi or not ozellikler:
             st.warning("Lütfen ürün adı ve özelliklerini giriniz.")
@@ -35,21 +36,14 @@ with col2:
             with st.spinner("Yapay zeka düşünüyor..."):
                 # Backend dosyasındaki fonksiyonu çalıştır
                 sonuc = metin_olustur(urun_adi, ozellikler, ton)
-                # ... diğer kodlar ...
 
     # Metin varsa göster
     if sonuc:
         st.markdown("### 📝 Oluşturulan Ürün Açıklaması")
         
-        # Metni bir alana yerleştirme
-        st.text_area("Kopyalamak İçin Tıklayın", sonuc, height=300)
-     
-        # Kopyalama butonunu ekle
-        st_copy_to_clipboard(sonuc, 'Kopyalandı! 📋')
-                   
-
+        # Streamlit'in yerleşik kopyalama butonunu kullanır (st.code)
+        st.code(sonuc, language='markdown')
+        
 # Alt bilgi
 st.markdown("---")
 st.markdown("© 2025 AI Writer App | Python ile geliştirildi")
-
-
